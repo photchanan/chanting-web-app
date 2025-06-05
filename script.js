@@ -19,7 +19,7 @@ function loadChant() {
       chantContainer.innerHTML = '';
       data.forEach(line => {
         chantContainer.innerHTML += `
-          <p><strong>${line.th}</strong><br/>${line.en}<br/><em>${line.trans}</em></p>
+		  <p><strong>${line.th}</strong><br/>${line.en}<br/><em>${line.trans}</em></p>
         `;
       });
 
