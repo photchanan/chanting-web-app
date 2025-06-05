@@ -48,6 +48,31 @@ function toggleAudio() {
   }
 }
 
+function speakText(text, lang = 'th-TH') {
+  const utterance = new SpeechSynthesisUtterance(text);
+  utterance.lang = lang;
+  utterance.rate = 0.9; // ความเร็ว (1 = ปกติ)
+  utterance.pitch = 1.0; // โทนเสียง
+
+  // เลือกเสียงที่รองรับภาษา
+  const voices = window.speechSynthesis.getVoices();
+  const selectedVoice = voices.find(v => v.lang === lang);
+  if (selectedVoice) {
+    utterance.voice = selectedVoice;
+  }
+
+  speechSynthesis.speak(utterance);
+}
+
+function readChant() {
+  const pTags = chantContainer.querySelectorAll('p');
+  pTags.forEach(p => {
+    const lines = p.innerText.split('\n');
+    speakText(lines[0], 'th-TH');  // บรรทัดแรกเป็นบทสวดไทย
+    speakText(lines[1], 'en-US');  // บรรทัดสองเป็นอังกฤษ
+  });
+}
+
 window.onload = () => {
   loadChant();
   chantContainer.style.fontSize = fontSizeSlider.value + "px";
