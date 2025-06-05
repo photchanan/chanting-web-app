@@ -22,8 +22,12 @@ function loadChant() {
           <p><strong>${line.th}</strong><br/>${line.en}<br/><em>${line.trans}</em></p>
         `;
       });
+
+      // อัปเดตเสียงตามบทสวด
+      audio.src = `audio/${selected}.mp3`;
     });
 }
+
 
 function toggleAutoScroll() {
   autoScroll = !autoScroll;
