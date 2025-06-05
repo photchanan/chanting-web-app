@@ -59,6 +59,8 @@ function speakText(text, lang = 'th-TH') {
   const selectedVoice = voices.find(v => v.lang === lang);
   if (selectedVoice) {
     utterance.voice = selectedVoice;
+  } else {
+    console.warn(`ไม่พบ voice สำหรับภาษา ${lang}`);
   }
 
   speechSynthesis.speak(utterance);
@@ -74,6 +76,7 @@ function readChant() {
 }
 
 window.onload = () => {
+  speechSynthesis.getVoices(); // โหลดเสียง
   loadChant();
   chantContainer.style.fontSize = fontSizeSlider.value + "px";
 };
