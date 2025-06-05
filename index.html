@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>แอปช่วยสวดมนต์</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>แอปช่วยสวดมนต์</h1>
+    <select id="chantSelector">
+      <option value="morning">บทสวดเช้า</option>
+      <option value="evening">บทสวดเย็น</option>
+    </select>
+  </header>
+
+  <main id="chantContainer"></main>
+
+  <footer>
+    <button onclick="toggleAutoScroll()">เริ่ม/หยุดเลื่อน</button>
+    <button onclick="toggleAudio()">เปิด/ปิดเสียง</button>
+    <input type="range" min="14" max="32" value="18" id="fontSizeSlider" />
+  </footer>
+
+  <audio id="chantAudio" src="audio/morning.mp3"></audio>
+  <script src="script.js"></script>
+</body>
+</html>

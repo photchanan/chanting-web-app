@@ -1,0 +1,20 @@
+body {
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #fffbe7;
+  color: #333;
+}
+header, footer {
+  padding: 10px;
+  background: #f9e79f;
+  text-align: center;
+}
+#chantContainer {
+  padding: 20px;
+  height: 60vh;
+  overflow-y: auto;
+}
+p {
+  margin: 10px 0;
+}
