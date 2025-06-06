@@ -1,4 +1,5 @@
 let autoScroll = false;
+let scrollSpeedLevel = 2; // เริ่มต้นที่ระดับกลาง (0 = ช้า, 4 = เร็วมาก)
 let scrollInterval;
 
 const chantSelector = document.getElementById('chantSelector');
@@ -10,6 +11,17 @@ chantSelector.addEventListener('change', loadChant);
 fontSizeSlider.addEventListener('input', () => {
   chantContainer.style.fontSize = fontSizeSlider.value + "px";
 });
+
+const speedDisplay = document.getElementById('speedDisplay');
+
+const speedSettings = [
+  { label: 'ช้ามาก', step: 1, interval: 100 },
+  { label: 'ช้า', step: 1, interval: 60 },
+  { label: 'กลาง', step: 2, interval: 50 },
+  { label: 'เร็ว', step: 3, interval: 40 },
+  { label: 'เร็วมาก', step: 4, interval: 30 }
+];
+
 
 function loadChant() {
   const selected = chantSelector.value;
@@ -28,13 +40,44 @@ function loadChant() {
     });
 }
 
+function updateSpeedLabel() {
+  speedDisplay.textContent = speedSettings[scrollSpeedLevel].label;
+}
+
+function increaseScrollSpeed() {
+  if (scrollSpeedLevel < speedSettings.length - 1) {
+    scrollSpeedLevel++;
+    updateSpeedLabel();
+    restartScrollIfActive();
+  }
+}
+
+function decreaseScrollSpeed() {
+  if (scrollSpeedLevel > 0) {
+    scrollSpeedLevel--;
+    updateSpeedLabel();
+    restartScrollIfActive();
+  }
+}
+
+function restartScrollIfActive() {
+  if (autoScroll) {
+    clearInterval(scrollInterval);
+    startAutoScroll();
+  }
+}
+
+function startAutoScroll() {
+  const { step, interval } = speedSettings[scrollSpeedLevel];
+  scrollInterval = setInterval(() => {
+    chantContainer.scrollBy({ top: step, behavior: 'smooth' });
+  }, interval);
+}
 
 function toggleAutoScroll() {
   autoScroll = !autoScroll;
   if (autoScroll) {
-    scrollInterval = setInterval(() => {
-      chantContainer.scrollBy({ top: 1, behavior: 'smooth' });
-    }, 100);
+    startAutoScroll();
   } else {
     clearInterval(scrollInterval);
   }
@@ -77,6 +120,7 @@ function readChant() {
 
 window.onload = () => {
   speechSynthesis.getVoices(); // โหลดเสียง
+  updateSpeedLabel();
   loadChant();
   chantContainer.style.fontSize = fontSizeSlider.value + "px";
 };

@@ -15,6 +15,16 @@ header, footer {
   height: 60vh;
   overflow-y: auto;
 }
+#scrollSpeedControl {
+  margin-top: 10px;
+  text-align: center;
+}
+
+#scrollSpeedControl button {
+  font-size: 18px;
+  padding: 5px 12px;
+  margin: 0 10px;
+}
 p {
   margin: 10px 0;
 }

@@ -20,6 +20,12 @@
 
   <footer>
     <button onclick="toggleAutoScroll()">เริ่ม/หยุดเลื่อน</button>
+    <div id="scrollSpeedControl">
+      <label>ความเร็วเลื่อนบทสวด:</label>
+      <button onclick="decreaseScrollSpeed()">–</button>
+      <span id="speedDisplay">กลาง</span>
+      <button onclick="increaseScrollSpeed()">+</button>
+    </div>
     <button onclick="toggleAudio()">เปิด/ปิดเสียง</button>
     <button onclick="readChant()">🔊 อ่านบทสวด</button>
     <input type="range" min="14" max="32" value="18" id="fontSizeSlider" />
