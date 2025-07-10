@@ -17,6 +17,11 @@
   </header>
 
   <main id="chantContainer"></main>
+  <section>
+    <h2>ค้นหาบทสวดจากจุดประสงค์</h2>
+    <input type="text" id="purposeSearch" placeholder="พิมพ์ เช่น แผ่เมตตา, ผ่อนคลาย, ก่อนนอน">
+    <ul id="chantResults"></ul>
+  </section>
 
   <footer>
     <button onclick="toggleAutoScroll()">เริ่ม/หยุดเลื่อน</button>
@@ -29,6 +34,7 @@
     <button onclick="toggleAudio()">เปิด/ปิดเสียง</button>
     <button onclick="readChant()">🔊 อ่านบทสวด</button>
     <input type="range" min="14" max="32" value="18" id="fontSizeSlider" />
+    
   </footer>
 
   <audio id="chantAudio" src="audio/morning.mp3"></audio>
